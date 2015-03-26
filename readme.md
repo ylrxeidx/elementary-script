@@ -16,6 +16,9 @@ wget -O /tmp/elementary-script.sh https://raw.githubusercontent.com/ylrxeidx/ele
 
 [![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/ylrxeidx/)
 
+## License
+
+[The MIT License](http://ylrxeidx.mit-license.org/ "The MIT License")
 
 ## Disclaimer
 
