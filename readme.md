@@ -4,6 +4,10 @@ A tiny script that helps you perform necessary tasks after you install elementar
 
 ![Screenshot](https://raw.githubusercontent.com/ylrxeidx/elementary-script/master/Screenshot.png)
 
+## elementary OS Version Compatibility
+
+elementary-script will always support the lastest stable version of elementary OS, which at the moment is **elementary OS 0.2 Luna**.
+
 ## Run
 
 Copy and paste the following line into a terminal window in order to run the script.
