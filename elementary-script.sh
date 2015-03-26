@@ -103,16 +103,12 @@ then
 	echo "Installing Google Chrome..."
 	if [[ $(uname -m) == "i686" ]]
 	then
-		mkdir ~/tmp/
-		wget -q -O ~/tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-		sudo dpkg -i ~/tmp/google-chrome-stable_current_i386.deb
-		rm -rf ~/tmp/
+		wget -q -O /tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+		sudo dpkg -i /tmp/google-chrome-stable_current_i386.deb
 	elif [[ $(uname -m) == "x86_64" ]]
 	then
-		mkdir ~/tmp/
-		wget -q -O ~/tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-		sudo dpkg -i ~/tmp/google-chrome-stable_current_amd64.deb
-		rm -rf ~/tmp/
+		wget -q -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
 	fi
 fi
 
