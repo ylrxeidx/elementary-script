@@ -23,7 +23,3 @@ wget -O /tmp/elementary-script.sh https://raw.githubusercontent.com/ylrxeidx/ele
 ## License
 
 [The MIT License](http://ylrxeidx.mit-license.org/ "The MIT License")
-
-## Disclaimer
-
-This script is not officially associated with elementary.
