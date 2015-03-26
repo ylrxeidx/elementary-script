@@ -3,8 +3,8 @@ clear
 
 # Zenity
 GUI=$(zenity --list --checklist \
-	--height 300 \
-	--width 600 \
+	--height 400 \
+	--width 800 \
 	--title="elementary-script" \
 	--text "Pick one or multiple actions to execute." \
 	--column=Picks \
@@ -21,6 +21,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Google Chrome" "Installs Google Chrome. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
 	FALSE "Install Firefox" "Installs Firefox. A free and open-source web browser." \
+	FALSE "Install Liferea" "Installs Liferea. a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds. Its GUI is similar to a desktop mail/newsclient, with an embedded graphical browser." \
 	FALSE "Install VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	FALSE "Install Transmission" "Installs the Transmission BitTorrent client." \
 	FALSE "Install Sublime Text 3" "Installs Sublime Text 3. A sophisticated text editor for code, markup and prose." \
@@ -126,6 +127,14 @@ then
 	clear
 	echo "Installing Firefox..."
 	sudo apt-get -y -qq install firefox
+fi
+
+# Install Liferea Action
+if [[ $GUI == *"Install Liferea"* ]]
+then
+	clear
+	echo "Installing Liferea..."
+	sudo apt-get -y -qq install liferea
 fi
 
 # Install VLC Action
