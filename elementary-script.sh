@@ -12,7 +12,7 @@ GUI=$(zenity --list --checklist \
 	--column=Description \
 	FALSE "Update System" "Updates the package lists, the system packages and Applications."  \
 	FALSE "Install Proprietary Drivers" "Installs the proprietary drivers."  \
-	FALSE "Speed-Up Memory" "Installs preload and zram-config." \
+	FALSE "Speed-Up Memory" "Installs preload and enables zRAM." \
 	FALSE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	FALSE "Install Extra Multimedia Codecs" "Installs extra multimedia codecs." \
 	FALSE "Install Support for Encrypted DVD's" "Installs support for playing encrypted DVD's." \
