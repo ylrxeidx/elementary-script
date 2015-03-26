@@ -24,6 +24,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Liferea" "Installs Liferea. a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds. Its GUI is similar to a desktop mail/newsclient, with an embedded graphical browser." \
 	FALSE "Install VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	FALSE "Install Transmission" "Installs the Transmission BitTorrent client." \
+	FALSE "Install Atom" "Installs Atom. A hackable text editor for the 21st Century." \
 	FALSE "Install Sublime Text 3" "Installs Sublime Text 3. A sophisticated text editor for code, markup and prose." \
 	FALSE "Install LibreOffice" "Installs LibreOffice. A powerful office suite." \
 	FALSE "Fix Broken Packages" "Fixes the broken packages." \
@@ -151,6 +152,16 @@ then
 	clear
 	echo "Installing Transmission..."
 	sudo apt-get -y -qq install transmission
+fi
+
+# Install Atom Action
+if [[ $GUI == *"Install Atom"* ]]
+then
+	clear
+	echo "Installing Atom..."
+	sudo add-apt-repository -y ppa:webupd8team/atom > /dev/null 2>&1
+	sudo apt-get -y -qq update
+	sudo apt-get -y -qq install atom
 fi
 
 # Install Sublime Text 3 Action
