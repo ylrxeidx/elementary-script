@@ -6,7 +6,7 @@ GUI=$(zenity --list --checklist \
 	--height 400 \
 	--width 800 \
 	--title="elementary-script" \
-	--text "Pick one or multiple actions to execute." \
+	--text "Pick one or multiple Actions to execute." \
 	--column=Picks \
 	--column=Actions \
 	--column=Description \
