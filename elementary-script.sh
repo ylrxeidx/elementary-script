@@ -36,8 +36,9 @@ if [[ $GUI == *"Update System"* ]]
 then
 	clear
 	echo "Updating system..."
-	sudo apt-get -y -qq update
-	sudo apt-get -y -qq upgrade
+	echo ""
+	sudo apt-get -y update
+	sudo apt-get -y upgrade
 fi
 
 # Install Proprietary Drivers Action
@@ -45,6 +46,7 @@ if [[ $GUI == *"Install Proprietary Drivers"* ]]
 then
 	clear
 	echo "Installing Proprietary Drivers..."
+	echo ""
 	sudo jockey-gtk
 fi
 
@@ -53,8 +55,9 @@ if [[ $GUI == *"Speed-Up Memory"* ]]
 then
 	clear
 	echo "Speeding-up Memory..."
-	sudo apt-get -y -qq install preload
-	sudo apt-get -y -qq install zram-config
+	echo ""
+	sudo apt-get -y install preload
+	sudo apt-get -y install zram-config
 fi
 
 # Install Ubuntu Restricted Extras Action
@@ -62,7 +65,8 @@ if [[ $GUI == *"Install Ubuntu Restricted Extras"* ]]
 then
 	clear
 	echo "Installing Ubuntu Restricted Extras..."
-	sudo apt-get -y -qq install ubuntu-restricted-extras
+	echo ""
+	sudo apt-get -y install ubuntu-restricted-extras
 fi
 
 # Install Extra Multimedia Codecs Action
@@ -70,7 +74,8 @@ if [[ $GUI == *"Install Extra Multimedia Codecs"* ]]
 then
 	clear
 	echo "Installing Extra Multimedia Codecs..."
-	sudo apt-get -y -qq install libavcodec-extra-53
+	echo ""
+	sudo apt-get -y install libavcodec-extra-53
 fi
 
 # Install Support for Encrypted DVD's Action
@@ -78,7 +83,8 @@ if [[ $GUI == *"Install Support for Encrypted DVD's"* ]]
 then
 	clear
 	echo "Installing Support for Encrypted DVD's..."
-	sudo apt-get -y -qq install libdvdread4
+	echo ""
+	sudo apt-get -y install libdvdread4
 	sudo /usr/share/doc/libdvdread4/install-css.sh
 fi
 
@@ -87,7 +93,8 @@ if [[ $GUI == *"Install Support for Archive Formats"* ]]
 then
 	clear
 	echo "Installing Support for Archive Formats"
-	sudo apt-get -y -qq install zip unzip p7zip p7zip-rar rar unrar
+	echo ""
+	sudo apt-get -y install zip unzip p7zip p7zip-rar rar unrar
 fi
 
 # Install GDebi Action
@@ -95,7 +102,8 @@ if [[ $GUI == *"Install GDebi"* ]]
 then
 	clear
 	echo "Installing GDebi..."
-	sudo apt-get -y -qq install gdebi
+	echo ""
+	sudo apt-get -y install gdebi
 fi
 
 # Install Google Chrome Action
@@ -103,13 +111,14 @@ if [[ $GUI == *"Install Google Chrome"* ]]
 then
 	clear
 	echo "Installing Google Chrome..."
+	echo ""
 	if [[ $(uname -m) == "i686" ]]
 	then
-		wget -q -O /tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
+		wget -O /tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
 		sudo dpkg -i /tmp/google-chrome-stable_current_i386.deb
 	elif [[ $(uname -m) == "x86_64" ]]
 	then
-		wget -q -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 		sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
 	fi
 fi
@@ -119,7 +128,8 @@ if [[ $GUI == *"Install Chromium"* ]]
 then
 	clear
 	echo "Installing Chromium..."
-	sudo apt-get -y -qq install chromium-browser
+	echo ""
+	sudo apt-get -y install chromium-browser
 fi
 
 # Install Firefox Action
@@ -127,7 +137,8 @@ if [[ $GUI == *"Install Firefox"* ]]
 then
 	clear
 	echo "Installing Firefox..."
-	sudo apt-get -y -qq install firefox
+	echo ""
+	sudo apt-get -y install firefox
 fi
 
 # Install Liferea Action
@@ -135,7 +146,8 @@ if [[ $GUI == *"Install Liferea"* ]]
 then
 	clear
 	echo "Installing Liferea..."
-	sudo apt-get -y -qq install liferea
+	echo ""
+	sudo apt-get -y install liferea
 fi
 
 # Install VLC Action
@@ -143,7 +155,8 @@ if [[ $GUI == *"Install VLC"* ]]
 then
 	clear
 	echo "Installing VLC..."
-	sudo apt-get -y -qq install vlc
+	echo ""
+	sudo apt-get -y install vlc
 fi
 
 # Install Transmission Action
@@ -151,7 +164,8 @@ if [[ $GUI == *"Install Transmission"* ]]
 then
 	clear
 	echo "Installing Transmission..."
-	sudo apt-get -y -qq install transmission
+	echo ""
+	sudo apt-get -y install transmission
 fi
 
 # Install Atom Action
@@ -159,9 +173,10 @@ if [[ $GUI == *"Install Atom"* ]]
 then
 	clear
 	echo "Installing Atom..."
-	sudo add-apt-repository -y ppa:webupd8team/atom > /dev/null 2>&1
-	sudo apt-get -y -qq update
-	sudo apt-get -y -qq install atom
+	echo ""
+	sudo add-apt-repository -y ppa:webupd8team/atom
+	sudo apt-get -y update
+	sudo apt-get -y install atom
 fi
 
 # Install Sublime Text 3 Action
@@ -169,9 +184,10 @@ if [[ $GUI == *"Install Sublime Text 3"* ]]
 then
 	clear
 	echo "Installing Sublime Text 3..."
-	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3 > /dev/null 2>&1
-	sudo apt-get -y -qq update
-	sudo apt-get -y -qq install sublime-text-installer 
+	echo ""
+	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
+	sudo apt-get -y update
+	sudo apt-get -y install sublime-text-installer
 fi
 
 # Install LibreOffice Action
@@ -179,7 +195,8 @@ if [[ $GUI == *"Install LibreOffice"* ]]
 then
 	clear
 	echo "Installing LibreOffice..."
-	sudo apt-get -y -qq install libreoffice 
+	echo ""
+	sudo apt-get -y install libreoffice
 fi
 
 # Fix Broken Packages Action
@@ -187,7 +204,8 @@ if [[ $GUI == *"Fix Broken Packages"* ]]
 then
 	clear
 	echo "Fixing the broken packages..."
-	sudo apt-get -y -qq -f install
+	echo ""
+	sudo apt-get -y -f install
 fi
 
 # Clean-Up Junk Action
@@ -195,8 +213,9 @@ if [[ $GUI == *"Clean-Up Junk"* ]]
 then
 	clear
 	echo "Cleaning-up junk..."
-	sudo apt-get -y -qq autoremove
-	sudo apt-get -y -qq autoclean
+	echo ""
+	sudo apt-get -y autoremove
+	sudo apt-get -y autoclean
 fi
 
 # Notification
