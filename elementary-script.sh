@@ -13,6 +13,7 @@ GUI=$(zenity --list --checklist \
 	TRUE "Update System" "Updates the package lists, the system packages and Applications."  \
 	TRUE "Enable PPAs" "Another extra layer of security and another level of annoyance. You cannot add PPA by default in Loki." \
 	FALSE "Install Elementary Tweaks" "Installing themes in elementary OS is a much easier task thanks to elementary Tweaks tool." \
+    TRUE "Install Elementary Full Icon Theme" "Installs Elementary Full Icon Theme. A mega pack of icons for elementary OS." \
 	FALSE "Install Proprietary Drivers" "Installs the proprietary drivers."  \
 	FALSE "Speed-Up Memory" "Installs preload and enables zRAM." \
 	FALSE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -57,7 +58,7 @@ then
 	sudo apt -y install software-properties-common
 fi
 
-# Install Elementary Tweaks
+# Install Elementary Tweaks Action
 if [[ $GUI == *"Install Elementary Tweaks"* ]]
 then
 	clear
@@ -66,6 +67,18 @@ then
 	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 	sudo apt update
 	sudo apt -y install elementary-tweaks
+fi
+
+# Install  Elementary Full Icon Theme
+if [[ $GUI == *"Install Elementary Full Icon Theme"* ]]
+then
+	clear
+	echo "Installing Elementary Full Icon Theme..."
+	echo ""
+	sudo apt -y install git
+	git clone https://github.com/btd1337/elementary-full-icon-theme
+	sudo mv elementary-full-icon-theme /usr/share/icons/
+	gsettings set org.gnome.desktop.interface icon-theme "elementary-full-icon-theme"
 fi
 
 # Install Proprietary Drivers Action
