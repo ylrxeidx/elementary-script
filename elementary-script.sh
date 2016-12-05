@@ -16,6 +16,7 @@ GUI=$(zenity --list --checklist \
 	TRUE "Enable PPAs" "Another extra layer of security and another level of annoyance. You cannot add PPA by default in Loki." \
 	FALSE "Install Elementary Tweaks" "Installing themes in elementary OS is a much easier task thanks to elementary Tweaks tool." \
     TRUE "Install Elementary Full Icon Theme" "Installs Elementary Full Icon Theme. A mega pack of icons for elementary OS." \
+	FALSE "Install Gufw Firewall" "Gufw is an easy and intuitive way to manage your linux firewall." \
 	FALSE "Install Proprietary Drivers" "Installs the proprietary drivers."  \
 	FALSE "Speed-Up Memory" "Installs preload and enables zRAM." \
 	FALSE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
@@ -86,6 +87,15 @@ then
 	git clone https://github.com/btd1337/elementary-full-icon-theme
 	sudo mv elementary-full-icon-theme /usr/share/icons/
 	gsettings set org.gnome.desktop.interface icon-theme "elementary-full-icon-theme"
+fi
+
+# Install Gufw Firewall Action
+if [[ $GUI == *"Install Gufw Firewall"* ]]
+then
+	clear
+	echo "Installing Gufw Firewall..."
+	echo ""
+	sudo apt -y install gufw
 fi
 
 # Install Proprietary Drivers Action
