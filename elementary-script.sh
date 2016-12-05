@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Clear the Terminal
 clear
 
