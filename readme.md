@@ -2,7 +2,7 @@
 
 A tiny script that helps you perform necessary tasks after you install elementary OS.
 
-![Screenshot](https://raw.githubusercontent.com/ylrxeidx/elementary-script/master/Screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/btd1337/elementary-script/master/Screenshot.png)
 
 ## elementary OS Version Compatibility
 
