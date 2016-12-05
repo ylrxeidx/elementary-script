@@ -1,12 +1,12 @@
 # elementary-script
 
-A tiny script that helps you perform necessary tasks after you install elementary OS.
+A tiny script that helps you perform necessary tasks after you install elementary OS or others Ubuntu based systems.
 
 ![Screenshot](https://raw.githubusercontent.com/btd1337/elementary-script/master/Screenshot.png)
 
-## elementary OS Version Compatibility
+## OS Version Compatibility
 
-elementary-script will always support the lastest stable version of elementary OS, which at the moment is **elementary OS 0.4 Loki**.
+elementary-script will always support the lastest stable version of elementary OS, which at the moment is **elementary OS 0.4 Loki** and Ubuntu based systems.
 
 ## Run
 
