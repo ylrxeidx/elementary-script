@@ -340,7 +340,7 @@ then
 	clear
 	echo "Installing Redshift..."
 	echo ""
-	sudo apt -y install redshift
+	sudo apt -y install redshift-gtk
 fi
 
 # Install Gnome Disk Utility Action
