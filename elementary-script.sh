@@ -24,9 +24,12 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Google Chrome" "Installs Google Chrome. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
 	FALSE "Install Firefox" "Installs Firefox. A free and open-source web browser." \
+	FALSE "Install Skype" "Video chat, make international calls, instant message and more with Skype." \
 	FALSE "Install Liferea" "Installs Liferea. a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds. Its GUI is similar to a desktop mail/newsclient, with an embedded graphical browser." \
 	FALSE "Install VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	FALSE "Install Clementine Music Player" "Installs Clementine. One of the Best Music Players and library organizer on Linux." \
+	FALSE "Install Gimp" "GIMP is an advanced picture editor. You can use it to edit, enhance, and retouch photos and scans, create drawings, and make your own images." \
+	FALSE "Install Deluge" "Deluge is a lightweight, Free Software, cross-platform BitTorrent client." \
 	FALSE "Install Transmission" "Installs the Transmission BitTorrent client." \
 	FALSE "Install Atom" "Installs Atom. A hackable text editor for the 21st Century." \
 	FALSE "Install Sublime Text 3" "Installs Sublime Text 3. A sophisticated text editor for code, markup and prose." \
@@ -181,6 +184,23 @@ then
 	sudo apt -y install firefox
 fi
 
+# Install Skype Action
+if [[ $GUI == *"Install Skype"* ]]
+then
+	clear
+	echo "Installing Skype..."
+	echo ""
+	if [[ $(uname -m) == "i686" ]]
+	then
+		wget -O /tmp/skype.deb https://download.skype.com/linux/skype-ubuntu-precise_4.3.0.37-1_i386.deb
+	elif [[ $(uname -m) == "x86_64" ]]
+	then
+		wget -O /tmp/skype.deb https://go.skype.com/skypeforlinux-64-alpha.deb
+	fi
+	sudo dpkg -i /tmp/skype.deb
+	sudo apt -f install
+fi
+
 # Install Liferea Action
 if [[ $GUI == *"Install Liferea"* ]]
 then
@@ -206,6 +226,24 @@ then
 	echo "Installing Clementine Music Player..."
 	echo ""
 	sudo apt -y install clementine
+fi
+
+# Install Gimp Action
+if [[ $GUI == *"Install Gimp"* ]]
+then
+	clear
+	echo "Installing Gimp Image Editor..."
+	echo ""
+	sudo apt -y install gimp
+fi
+
+# Install Deluge Action
+if [[ $GUI == *"Install Deluge"* ]]
+then
+	clear
+	echo "Installing Deluge..."
+	echo ""
+	sudo apt -y install deluge
 fi
 
 # Install Transmission Action
