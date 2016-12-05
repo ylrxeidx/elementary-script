@@ -25,6 +25,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
 	FALSE "Install Firefox" "Installs Firefox. A free and open-source web browser." \
 	FALSE "Install Skype" "Video chat, make international calls, instant message and more with Skype." \
+	FALSE "Install Dropbox" "Installs Dropbox with wingpanel support. Dropbox is a free service that lets you bring your photos, docs, and videos anywhere and share them easily." \
 	FALSE "Install Liferea" "Installs Liferea. a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds. Its GUI is similar to a desktop mail/newsclient, with an embedded graphical browser." \
 	FALSE "Install VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	FALSE "Install Clementine Music Player" "Installs Clementine. One of the Best Music Players and library organizer on Linux." \
@@ -35,8 +36,9 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Sublime Text 3" "Installs Sublime Text 3. A sophisticated text editor for code, markup and prose." \
 	FALSE "Install LibreOffice" "Installs LibreOffice. A powerful office suite." \
 	FALSE "Install WPS Office" "Installs WPS Office. The most compatible free office suite." \
-	FALSE "Install TLP" "Install TLP to save battery and prevent overheating" \
-	FALSE "Install Redshift" "Use night shift to save your eyes" \
+	FALSE "Install TLP" "Install TLP to save battery and prevent overheating." \
+	FALSE "Install Redshift" "Use night shift to save your eyes." \
+	FALSE "Install Disk Utility" "Gnome Disk Utility is a tool to manage disk drives and media." \
 	FALSE "Fix Broken Packages" "Fixes the broken packages." \
 	FALSE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
 	FALSE "Enable Plank magnifying effect" "Enabling OSX-style zoom in Plank" \
@@ -201,6 +203,18 @@ then
 	sudo apt -f install
 fi
 
+# Install Dropbox Action
+if [[ $GUI == *"Install Dropbox"* ]]
+then
+	clear
+	echo "Installing Drobox..."
+	echo ""
+	sudo apt -y install git
+	sudo apt --purge remove -y dropbox*
+	git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
+	sudo bash /tmp/elementary-dropbox/install.sh
+fi
+
 # Install Liferea Action
 if [[ $GUI == *"Install Liferea"* ]]
 then
@@ -319,13 +333,22 @@ then
 	sudo apt -y install tlp tlp-rdw
 fi
 
-# Install Redshift
+# Install Redshift Action
 if [[ $GUI == *"Install Redshift"* ]]
 then
 	clear
 	echo "Installing Redshift..."
 	echo ""
 	sudo apt -y install redshift
+fi
+
+# Install Gnome Disk Utility Action
+if [[ $GUI == *"Install Disk Utility"* ]]
+then
+	clear
+	echo "Installing Gnome Disk Utility..."
+	echo ""
+	sudo apt -y install gnome-disk-utility
 fi
 
 # Fix Broken Packages Action
