@@ -19,11 +19,9 @@ GUI=$(zenity --list --checklist \
     FALSE "Add Oibaf Repository" "This repository contain updated and optimized open graphics drivers." \
 	FALSE "Install Gufw Firewall" "Gufw is an easy and intuitive way to manage your linux firewall." \
 	FALSE "Speed-Up Memory" "Installs preload and enables zRAM." \
-	FALSE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
-	FALSE "Install Extra Multimedia Codecs" "Installs extra multimedia codecs." \
 	FALSE "Install Support for Encrypted DVD's" "Installs support for playing encrypted DVD's." \
 	FALSE "Install Support for Archive Formats" "Installs support for archive formats." \
-	FALSE "Install GDebi" "Installs GDebi. A simple tool to install deb files." \
+	TRUE "Install GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Install Google Chrome" "Installs Google Chrome. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
 	FALSE "Install Firefox" "Installs Firefox. A free and open-source web browser." \
@@ -42,8 +40,10 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install TLP" "Install TLP to save battery and prevent overheating." \
 	FALSE "Install Redshift" "Use night shift to save your eyes." \
 	FALSE "Install Disk Utility" "Gnome Disk Utility is a tool to manage disk drives and media." \
-	FALSE "Fix Broken Packages" "Fixes the broken packages." \
-	FALSE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
+	TRUE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
+	FALSE "Install Extra Multimedia Codecs" "Installs extra multimedia codecs." \
+	TRUE "Fix Broken Packages" "Fixes the broken packages." \
+	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
 	FALSE "Enable Plank magnifying effect" "Enabling OSX-style zoom in Plank" \
 	--separator=', ');
 
@@ -117,15 +117,6 @@ then
 	echo ""
 	sudo apt -y install preload
 	sudo apt -y install zram-config
-fi
-
-# Install Ubuntu Restricted Extras Action
-if [[ $GUI == *"Install Ubuntu Restricted Extras"* ]]
-then
-	clear
-	echo "Installing Ubuntu Restricted Extras..."
-	echo ""
-	sudo apt -y install ubuntu-restricted-extras
 fi
 
 # Install Extra Multimedia Codecs Action
@@ -364,6 +355,15 @@ then
 	echo "Installing Gnome Disk Utility..."
 	echo ""
 	sudo apt -y install gnome-disk-utility
+fi
+
+# Install Ubuntu Restricted Extras Action
+if [[ $GUI == *"Install Ubuntu Restricted Extras"* ]]
+then
+	clear
+	echo "Installing Ubuntu Restricted Extras..."
+	echo ""
+	sudo apt -y install ubuntu-restricted-extras
 fi
 
 # Fix Broken Packages Action
