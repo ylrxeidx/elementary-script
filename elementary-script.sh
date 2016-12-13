@@ -333,11 +333,9 @@ fi
 # Install TLP
 if [[ $GUI == *"Install TLP"* ]]
 then
-	clear
-    	sudo apt -y remove laptop-mode-tools 
-	clear
 	echo "Installing TLP..."
 	echo ""
+	sudo apt --purge remove -y laptop-mode-tools	#Avoid conflict with TLP
 	sudo apt -y install tlp tlp-rdw
 fi
 
