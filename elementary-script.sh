@@ -334,7 +334,8 @@ fi
 if [[ $GUI == *"Install TLP"* ]]
 then
 	clear
-    sudo apt -y remove laptop-mode-tools 
+    	sudo apt -y remove laptop-mode-tools 
+	clear
 	echo "Installing TLP..."
 	echo ""
 	sudo apt -y install tlp tlp-rdw
