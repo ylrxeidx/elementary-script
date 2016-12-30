@@ -18,11 +18,10 @@ GUI=$(zenity --list --checklist \
     TRUE "Install Elementary Full Icon Theme" "Installs Elementary Full Icon Theme. A mega pack of icons for elementary OS." \
     FALSE "Add Oibaf Repository" "This repository contain updated and optimized open graphics drivers." \
 	FALSE "Install Gufw Firewall" "Gufw is an easy and intuitive way to manage your linux firewall." \
-	FALSE "Speed-Up Memory" "Installs preload and enables zRAM." \
 	FALSE "Install Support for Encrypted DVD's" "Installs support for playing encrypted DVD's." \
 	FALSE "Install Support for Archive Formats" "Installs support for archive formats." \
 	TRUE "Install GDebi" "Installs GDebi. A simple tool to install deb files." \
-	FALSE "Install Google Chrome" "Installs Google Chrome. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
+	FALSE "Install Google Chrome" "Installs Google Chrome 64bits. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
 	FALSE "Install Firefox" "Installs Firefox. A free and open-source web browser." \
 	FALSE "Install Skype" "Video chat, make international calls, instant message and more with Skype." \
@@ -44,7 +43,6 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Extra Multimedia Codecs" "Installs extra multimedia codecs." \
 	TRUE "Fix Broken Packages" "Fixes the broken packages." \
 	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
-	FALSE "Enable Plank magnifying effect" "Enabling OSX-style zoom in Plank" \
 	--separator=', ');
 
 # Update System Action
@@ -109,16 +107,6 @@ then
 	sudo apt -y install gufw
 fi
 
-# Speed-Up Memory Action
-if [[ $GUI == *"Speed-Up Memory"* ]]
-then
-	clear
-	echo "Speeding-up Memory..."
-	echo ""
-	sudo apt -y install preload
-	sudo apt -y install zram-config
-fi
-
 # Install Extra Multimedia Codecs Action
 if [[ $GUI == *"Install Extra Multimedia Codecs"* ]]
 then
@@ -162,15 +150,8 @@ then
 	clear
 	echo "Installing Google Chrome..."
 	echo ""
-	if [[ $(uname -m) == "i686" ]]
-	then
-		wget -O /tmp/google-chrome-stable_current_i386.deb https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb
-		sudo dpkg -i /tmp/google-chrome-stable_current_i386.deb
-	elif [[ $(uname -m) == "x86_64" ]]
-	then
-		wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-		sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
-	fi
+	wget -O /tmp/google-chrome-stable_current_amd64.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	sudo dpkg -i /tmp/google-chrome-stable_current_amd64.deb
 fi
 
 # Install Chromium
@@ -385,17 +366,6 @@ then
 	sudo apt -y autoclean
 fi
 
-# Install Enable Plank magnifying effect
-if [[ $GUI == *"Enable Plank magnifying effect"* ]]
-then
-	clear
-	echo "Enabling Plank magnifying effect..."
-	echo ""
-	sudo apt --purge remove -y plank
-	sudo add-apt-repository -y ppa:ricotz/docky
-	sudo apt update
-	sudo apt -y install plank
-fi
 
 # Notification
 clear
