@@ -70,6 +70,8 @@ then
 	clear
 	echo "Installing Elementary Tweaks..."
 	echo ""
+    sudo apt-add-repository -r ppa:philip.scott/elementary-tweaks -y    #remove if already installed
+    sudo apt update
 	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 	sudo apt update
 	sudo apt -y install elementary-tweaks
@@ -93,6 +95,8 @@ then
 	clear
 	echo "Adding Oibaf Repository and updating..."
 	echo ""
+    sudo apt-add-repository -r ppa:oibaf/graphics-drivers -y    #remove if already installed
+    sudo apt update
 	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
 	sudo apt update
 	sudo apt -y full-upgrade
@@ -262,6 +266,8 @@ then
 	clear
 	echo "Installing Atom..."
 	echo ""
+    sudo apt-add-repository -r ppa:webupd8team/atom -y    #remove if already installed
+    sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt -y update
 	sudo apt -y install atom
@@ -273,6 +279,8 @@ then
 	clear
 	echo "Installing Sublime Text 3..."
 	echo ""
+    sudo apt-add-repository -r ppa:webupd8team/sublime-text-3 -y    #remove if already installed
+    sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt -y update
 	sudo apt -y install sublime-text-installer
