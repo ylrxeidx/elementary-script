@@ -19,6 +19,10 @@ cd elementary-script
 ./elementary-script.sh
 ```
 
+## References
+
+[Diolinux](http://www.diolinux.com.br/2016/12/elementary-script-pos-instalacao.html)
+
 ## Donate
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_flow&SESSION=mGFVFnsgi3YhUG_ZA8UBwRWhLy7-Udj680edJmyp0iouudyIaNlWKMgldRi&dispatch=5885d80a13c0db1f8e263663d3faee8d333dc9aadeed3fe0b5b299d55fd35542)
