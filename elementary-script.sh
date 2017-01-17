@@ -18,7 +18,7 @@ GUI=$(zenity --list --checklist \
     TRUE "Install Elementary Full Icon Theme" "Installs Elementary Full Icon Theme. A mega pack of icons for elementary OS." \
     FALSE "Add Oibaf Repository" "This repository contain updated and optimized open graphics drivers." \
 	FALSE "Install Gufw Firewall" "Gufw is an easy and intuitive way to manage your linux firewall." \
-	FALSE "Install Support for Encrypted DVD's" "Installs support for playing encrypted DVD's." \
+	FALSE "Install Notes-up" "Aimed for elementary OS, notes-up is a virtual notebook manager were you can write your notes in markdown format." \
 	FALSE "Install Support for Archive Formats" "Installs support for archive formats." \
 	TRUE "Install GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Install Google Chrome" "Installs Google Chrome 64bits. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
@@ -40,10 +40,27 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Redshift" "Use night shift to save your eyes." \
 	FALSE "Install Disk Utility" "Gnome Disk Utility is a tool to manage disk drives and media." \
 	TRUE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
-	FALSE "Install Extra Multimedia Codecs" "Installs extra multimedia codecs." \
 	TRUE "Fix Broken Packages" "Fixes the broken packages." \
 	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
 	--separator=', ');
+
+	function installPackage() {
+		name=$1
+		package=$(dpkg --get-selections | grep "$name" )
+		echo
+	  echo -n "Verifying that the $name package is installed."
+		sleep 2
+		echo "$package"
+		echo
+		if [ -n "$package" ] ;
+		then echo
+		     echo "Package $name is already installed."
+		else echo
+		     echo "Package $name required-> Not installed"
+		     echo "Automatically installing the package..."
+		     sudo apt -y install $name
+		fi
+	}
 
 # Update System Action
 if [[ $GUI == *"Update System"* ]]
@@ -61,7 +78,7 @@ then
 	clear
 	echo "Enabling PPAs..."
 	echo ""
-	sudo apt -y install software-properties-common
+	installPackage software-properties-common
 fi
 
 # Install Elementary Tweaks Action
@@ -74,18 +91,28 @@ then
     sudo apt update
 	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 	sudo apt update
-	sudo apt -y install elementary-tweaks
+	installPackage elementary-tweaks
 fi
 
 # Install  Elementary Full Icon Theme
 if [[ $GUI == *"Install Elementary Full Icon Theme"* ]]
 then
 	clear
-	echo "Installing Elementary Full Icon Theme..."
-	echo ""
-	sudo apt -y install git
-	git clone https://github.com/btd1337/elementary-full-icon-theme
-	sudo mv elementary-full-icon-theme /usr/share/icons/
+	installPackage git
+
+	directory=/usr/share/icons/elementary-full-icon-theme
+	if [ -d "$directory" ];	#Verifying if directory exists
+	then
+		echo "The icon-pack already installed. They will be updated now..."
+		echo ""
+  	cd /usr/share/icons/elementary-full-icon-theme
+		git pull
+	else
+		echo "Installing Elementary Full Icon Theme..."
+		echo ""
+		git clone https://github.com/btd1337/elementary-full-icon-theme
+		sudo mv elementary-full-icon-theme /usr/share/icons/
+	fi
 	gsettings set org.gnome.desktop.interface icon-theme "elementary-full-icon-theme"
 fi
 
@@ -95,8 +122,8 @@ then
 	clear
 	echo "Adding Oibaf Repository and updating..."
 	echo ""
-    sudo apt-add-repository -r ppa:oibaf/graphics-drivers -y    #remove if already installed
-    sudo apt update
+  sudo apt-add-repository -r ppa:oibaf/graphics-drivers -y    #remove if already installed
+  sudo apt update
 	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
 	sudo apt update
 	sudo apt -y full-upgrade
@@ -108,26 +135,20 @@ then
 	clear
 	echo "Installing Gufw Firewall..."
 	echo ""
-	sudo apt -y install gufw
+	installPackage gufw
 fi
 
-# Install Extra Multimedia Codecs Action
-if [[ $GUI == *"Install Extra Multimedia Codecs"* ]]
+# Install Notes-up
+if [[ $GUI == *"Install Notes-up"* ]]
 then
 	clear
-	echo "Installing Extra Multimedia Codecs..."
+	echo "Installing Notes-up..."
 	echo ""
-	sudo apt -y install libavcodec-extra-53
-fi
-
-# Install Support for Encrypted DVD's Action
-if [[ $GUI == *"Install Support for Encrypted DVD's"* ]]
-then
-	clear
-	echo "Installing Support for Encrypted DVD's..."
-	echo ""
-	sudo apt -y install libdvdread4
-	sudo /usr/share/doc/libdvdread4/install-css.sh
+	sudo apt-add-repository -r ppa:philip.scott/notes-up -y    #remove if already installed
+  sudo apt update
+	sudo add-apt-repository ppa:philip.scott/notes-up
+	sudo apt-get update
+	installPackage notes-up
 fi
 
 # Install Support for Archive Formats Action
@@ -136,7 +157,7 @@ then
 	clear
 	echo "Installing Support for Archive Formats"
 	echo ""
-	sudo apt -y install zip unzip p7zip p7zip-rar rar unrar
+	installPackage zip unzip p7zip p7zip-rar rar unrar
 fi
 
 # Install GDebi Action
@@ -145,7 +166,7 @@ then
 	clear
 	echo "Installing GDebi..."
 	echo ""
-	sudo apt -y install gdebi
+	installPackage gdebi
 fi
 
 # Install Google Chrome Action
@@ -164,7 +185,7 @@ then
 	clear
 	echo "Installing Chromium..."
 	echo ""
-	sudo apt -y install chromium-browser
+	installPackage chromium-browser
 fi
 
 # Install Firefox Action
@@ -173,7 +194,7 @@ then
 	clear
 	echo "Installing Firefox..."
 	echo ""
-	sudo apt -y install firefox
+	installPackage firefox
 fi
 
 # Install Skype Action
@@ -199,9 +220,9 @@ then
 	clear
 	echo "Installing Drobox..."
 	echo ""
-	sudo apt -y install git
+	installPackage git
 	sudo apt --purge remove -y dropbox*
-	sudo apt -y install python-gpgme	
+	installPackage python-gpgme
 	git clone https://github.com/zant95/elementary-dropbox /tmp/elementary-dropbox
 	sudo bash /tmp/elementary-dropbox/install.sh
 fi
@@ -212,7 +233,7 @@ then
 	clear
 	echo "Installing Liferea..."
 	echo ""
-	sudo apt -y install liferea
+	installPackage liferea
 fi
 
 # Install VLC Action
@@ -221,7 +242,7 @@ then
 	clear
 	echo "Installing VLC..."
 	echo ""
-	sudo apt -y install vlc
+	installPackage vlc
 fi
 
 # Install Clementine Action
@@ -230,7 +251,7 @@ then
 	clear
 	echo "Installing Clementine Music Player..."
 	echo ""
-	sudo apt -y install clementine
+	installPackage clementine
 fi
 
 # Install Gimp Action
@@ -239,7 +260,7 @@ then
 	clear
 	echo "Installing Gimp Image Editor..."
 	echo ""
-	sudo apt -y install gimp
+	installPackage gimp
 fi
 
 # Install Deluge Action
@@ -248,7 +269,7 @@ then
 	clear
 	echo "Installing Deluge..."
 	echo ""
-	sudo apt -y install deluge
+	installPackage deluge
 fi
 
 # Install Transmission Action
@@ -257,7 +278,7 @@ then
 	clear
 	echo "Installing Transmission..."
 	echo ""
-	sudo apt -y install transmission
+	installPackage transmission
 fi
 
 # Install Atom Action
@@ -270,7 +291,7 @@ then
     sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt -y update
-	sudo apt -y install atom
+	installPackage atom
 fi
 
 # Install Sublime Text 3 Action
@@ -283,7 +304,7 @@ then
     sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt -y update
-	sudo apt -y install sublime-text-installer
+	installPackage sublime-text-installer
 fi
 
 # Install LibreOffice Action
@@ -292,7 +313,7 @@ then
 	clear
 	echo "Installing LibreOffice..."
 	echo ""
-	sudo apt -y install libreoffice
+	installPackage libreoffice
 fi
 
 # Install WPS Office
@@ -325,7 +346,7 @@ then
 	echo "Installing TLP..."
 	echo ""
 	sudo apt --purge remove -y laptop-mode-tools	#Avoid conflict with TLP
-	sudo apt -y install tlp tlp-rdw
+	installPackage tlp tlp-rdw
 fi
 
 # Install Redshift Action
@@ -334,7 +355,7 @@ then
 	clear
 	echo "Installing Redshift..."
 	echo ""
-	sudo apt -y install redshift-gtk
+	installPackage redshift-gtk
 fi
 
 # Install Gnome Disk Utility Action
@@ -343,7 +364,7 @@ then
 	clear
 	echo "Installing Gnome Disk Utility..."
 	echo ""
-	sudo apt -y install gnome-disk-utility
+	installPackage gnome-disk-utility
 fi
 
 # Install Ubuntu Restricted Extras Action
@@ -352,7 +373,7 @@ then
 	clear
 	echo "Installing Ubuntu Restricted Extras..."
 	echo ""
-	sudo apt -y install ubuntu-restricted-extras
+	installPackage ubuntu-restricted-extras
 fi
 
 # Fix Broken Packages Action
