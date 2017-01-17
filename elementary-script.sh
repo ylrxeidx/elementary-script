@@ -87,8 +87,8 @@ then
 	clear
 	echo "Installing Elementary Tweaks..."
 	echo ""
-    sudo apt-add-repository -r ppa:philip.scott/elementary-tweaks -y    #remove if already installed
-    sudo apt update
+  sudo apt-add-repository -r ppa:philip.scott/elementary-tweaks -y    #remove if already installed
+  sudo apt update
 	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 	sudo apt update
 	installPackage elementary-tweaks
@@ -157,7 +157,12 @@ then
 	clear
 	echo "Installing Support for Archive Formats"
 	echo ""
-	installPackage zip unzip p7zip p7zip-rar rar unrar
+	installPackage zip
+	installPackage unzip
+	installPackage p7zip
+	installPackage p7zip-rar
+	installPackage rar
+	installPackage unrar
 fi
 
 # Install GDebi Action
@@ -287,8 +292,8 @@ then
 	clear
 	echo "Installing Atom..."
 	echo ""
-    sudo apt-add-repository -r ppa:webupd8team/atom -y    #remove if already installed
-    sudo apt update
+  sudo apt-add-repository -r ppa:webupd8team/atom -y    #remove if already installed
+  sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt -y update
 	installPackage atom
@@ -300,8 +305,8 @@ then
 	clear
 	echo "Installing Sublime Text 3..."
 	echo ""
-    sudo apt-add-repository -r ppa:webupd8team/sublime-text-3 -y    #remove if already installed
-    sudo apt update
+  sudo apt-add-repository -r ppa:webupd8team/sublime-text-3 -y    #remove if already installed
+  sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt -y update
 	installPackage sublime-text-installer
@@ -346,7 +351,8 @@ then
 	echo "Installing TLP..."
 	echo ""
 	sudo apt --purge remove -y laptop-mode-tools	#Avoid conflict with TLP
-	installPackage tlp tlp-rdw
+	installPackage tlp
+	installPackage tlp-rdw
 fi
 
 # Install Redshift Action
