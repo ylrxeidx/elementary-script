@@ -19,7 +19,8 @@ GUI=$(zenity --list --checklist \
     FALSE "Add Oibaf Repository" "This repository contain updated and optimized open graphics drivers." \
 	FALSE "Install Gufw Firewall" "Gufw is an easy and intuitive way to manage your linux firewall." \
 	FALSE "Install Notes-up" "Aimed for elementary OS, notes-up is a virtual notebook manager were you can write your notes in markdown format." \
-	FALSE "Install Support for Archive Formats" "Installs support for archive formats." \
+	FALSE "Install Support for Archive Formats" "Installs support for archive formats(.zip, .rar, .p7)." \
+	FALSE "Install Startup Disk Creator" "Startup Disk Creator converts a USB key or SD card into a volume from which you can start up and run OS Linux" \
 	TRUE "Install GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Install Google Chrome" "Installs Google Chrome 64bits. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
@@ -149,6 +150,15 @@ then
 	sudo add-apt-repository ppa:philip.scott/notes-up
 	sudo apt-get update
 	installPackage notes-up
+fi
+
+# Install Startup Disk Creator
+if [[ $GUI == *"Install Startup Disk Creator"* ]]
+then
+	clear
+	echo "Installing Startup Disk Creator"
+	echo ""
+	installPackage usb-creator-gtk
 fi
 
 # Install Support for Archive Formats Action
