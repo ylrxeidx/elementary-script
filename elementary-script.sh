@@ -28,6 +28,7 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Skype" "Video chat, make international calls, instant message and more with Skype." \
 	FALSE "Install Dropbox" "Installs Dropbox with wingpanel support. Dropbox is a free service that lets you bring your photos, docs, and videos anywhere and share them easily." \
 	FALSE "Install Liferea" "Installs Liferea. a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds. Its GUI is similar to a desktop mail/newsclient, with an embedded graphical browser." \
+	FALSE "Install Go For It!" "Go For It! is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task." \
 	FALSE "Install VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	FALSE "Install Clementine Music Player" "Installs Clementine. One of the Best Music Players and library organizer on Linux." \
 	FALSE "Install Gimp" "GIMP is an advanced picture editor. You can use it to edit, enhance, and retouch photos and scans, create drawings, and make your own images." \
@@ -88,8 +89,8 @@ then
 	clear
 	echo "Installing Elementary Tweaks..."
 	echo ""
-  sudo apt-add-repository -r ppa:philip.scott/elementary-tweaks -y    #remove if already installed
-  sudo apt update
+  	sudo apt-add-repository -r ppa:philip.scott/elementary-tweaks -y    #remove if already installed
+  	sudo apt update
 	sudo add-apt-repository -y ppa:philip.scott/elementary-tweaks
 	sudo apt update
 	installPackage elementary-tweaks
@@ -123,8 +124,8 @@ then
 	clear
 	echo "Adding Oibaf Repository and updating..."
 	echo ""
-  sudo apt-add-repository -r ppa:oibaf/graphics-drivers -y    #remove if already installed
-  sudo apt update
+  	sudo apt-add-repository -r ppa:oibaf/graphics-drivers -y    #remove if already installed
+  	sudo apt update
 	sudo add-apt-repository -y ppa:oibaf/graphics-drivers
 	sudo apt update
 	sudo apt -y full-upgrade
@@ -146,8 +147,8 @@ then
 	echo "Installing Notes-up..."
 	echo ""
 	sudo apt-add-repository -r ppa:philip.scott/notes-up -y    #remove if already installed
-  sudo apt update
-	sudo add-apt-repository ppa:philip.scott/notes-up
+  	sudo apt update
+	sudo add-apt-repository -y ppa:philip.scott/notes-up
 	sudo apt-get update
 	installPackage notes-up
 fi
@@ -226,7 +227,7 @@ then
 		wget -O /tmp/skype.deb https://go.skype.com/skypeforlinux-64-alpha.deb
 	fi
 	sudo dpkg -i /tmp/skype.deb
-	sudo apt -f install
+	sudo apt -f install -y
 fi
 
 # Install Dropbox Action
@@ -249,6 +250,19 @@ then
 	echo "Installing Liferea..."
 	echo ""
 	installPackage liferea
+fi
+
+# Install Go For It!
+if [[ $GUI == *"Install Go For It!"* ]]
+then
+	clear
+	echo "Installing Go For It!..."
+	echo ""
+	sudo apt-add-repository -r ppa:go-for-it-team/go-for-it-daily -y    #remove if already installed
+  	sudo apt update
+	sudo add-apt-repository -y ppa:go-for-it-team/go-for-it-daily
+	sudo apt-get update
+	installPackage go-for-it
 fi
 
 # Install VLC Action
@@ -302,8 +316,8 @@ then
 	clear
 	echo "Installing Atom..."
 	echo ""
-  sudo apt-add-repository -r ppa:webupd8team/atom -y    #remove if already installed
-  sudo apt update
+  	sudo apt-add-repository -r ppa:webupd8team/atom -y    #remove if already installed
+  	sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/atom
 	sudo apt -y update
 	installPackage atom
@@ -315,8 +329,8 @@ then
 	clear
 	echo "Installing Sublime Text 3..."
 	echo ""
-  sudo apt-add-repository -r ppa:webupd8team/sublime-text-3 -y    #remove if already installed
-  sudo apt update
+  	sudo apt-add-repository -r ppa:webupd8team/sublime-text-3 -y    #remove if already installed
+  	sudo apt update
 	sudo add-apt-repository -y ppa:webupd8team/sublime-text-3
 	sudo apt -y update
 	installPackage sublime-text-installer
