@@ -15,8 +15,8 @@ GUI=$(zenity --list --checklist \
 	TRUE "Update System" "Updates the package lists, the system packages and Applications."  \
 	TRUE "Enable PPAs" "Another extra layer of security and another level of annoyance. You cannot add PPA by default in Loki." \
 	FALSE "Install Elementary Tweaks" "Installing themes in elementary OS is a much easier task thanks to elementary Tweaks tool." \
-    TRUE "Install Elementary Full Icon Theme" "Installs Elementary Full Icon Theme. A mega pack of icons for elementary OS." \
-    FALSE "Add Oibaf Repository" "This repository contain updated and optimized open graphics drivers." \
+    	TRUE "Install Elementary Full Icon Theme" "Installs Elementary Full Icon Theme. A mega pack of icons for elementary OS." \
+    	FALSE "Add Oibaf Repository" "This repository contain updated and optimized open graphics drivers." \
 	FALSE "Install Gufw Firewall" "Gufw is an easy and intuitive way to manage your linux firewall." \
 	FALSE "Install Notes-up" "Aimed for elementary OS, notes-up is a virtual notebook manager were you can write your notes in markdown format." \
 	FALSE "Install Support for Archive Formats" "Installs support for archive formats(.zip, .rar, .p7)." \
@@ -211,8 +211,10 @@ then
 	clear
 	echo "Installing Opera..."
 	echo ""
-	wget wget http://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_42.0.2393.517_amd64.deb -O /tmp/opera.deb
-	sudo dpkg -i /tmp/opera.deb
+	sudo add-apt-repository 'deb https://deb.opera.com/opera-stable/ stable non-free' -y
+	wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+	sudo apt update
+	installPackage opera-stable
 fi
 
 # Install Firefox Action
@@ -269,7 +271,7 @@ then
 	clear
 	echo "Installing Go For It!..."
 	echo ""
-	sudo apt-add-repository -r ppa:go-for-it-team/go-for-it-daily -y    #remove if already installed
+	sudo add-apt-repository -r ppa:go-for-it-team/go-for-it-daily -y    #remove if already installed
   	sudo apt update
 	sudo add-apt-repository -y ppa:go-for-it-team/go-for-it-daily
 	sudo apt-get update
