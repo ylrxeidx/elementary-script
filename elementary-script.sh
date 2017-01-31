@@ -24,11 +24,12 @@ GUI=$(zenity --list --checklist \
 	TRUE "Install GDebi" "Installs GDebi. A simple tool to install deb files." \
 	FALSE "Install Google Chrome" "Installs Google Chrome 64bits. A browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier." \
 	FALSE "Install Chromium" "Installs Chromium. An open-source browser project that aims to build a safer, faster, and more stable way for all Internet users to experience the web." \
+	FALSE "Install Opera" "Installs Opera. Fast, secure, easy-to-use browser" \
 	FALSE "Install Firefox" "Installs Firefox. A free and open-source web browser." \
 	FALSE "Install Skype" "Video chat, make international calls, instant message and more with Skype." \
 	FALSE "Install Dropbox" "Installs Dropbox with wingpanel support. Dropbox is a free service that lets you bring your photos, docs, and videos anywhere and share them easily." \
 	FALSE "Install Liferea" "Installs Liferea. a web feed reader/news aggregator that brings together all of the content from your favorite subscriptions into a simple interface that makes it easy to organize and browse feeds. Its GUI is similar to a desktop mail/newsclient, with an embedded graphical browser." \
-	FALSE "Install Go For It!" "Go For It! is a simple and stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task." \
+	FALSE "Install Go For It!" "Go For It! is a simple andsudo stylish productivity app, featuring a to-do list, merged with a timer that keeps your focus on the current task." \
 	FALSE "Install VLC" "Installs VLC. A free and open source cross-platform multimedia player and framework that plays most multimedia files as well as DVDs, Audio CDs, VCDs, and various streaming protocols." \
 	FALSE "Install Clementine Music Player" "Installs Clementine. One of the Best Music Players and library organizer on Linux." \
 	FALSE "Install Gimp" "GIMP is an advanced picture editor. You can use it to edit, enhance, and retouch photos and scans, create drawings, and make your own images." \
@@ -202,6 +203,16 @@ then
 	echo "Installing Chromium..."
 	echo ""
 	installPackage chromium-browser
+fi
+
+# Install Opera
+if [[ $GUI == *"Install Opera"* ]]
+then
+	clear
+	echo "Installing Opera..."
+	echo ""
+	wget wget http://deb.opera.com/opera/pool/non-free/o/opera-stable/opera-stable_42.0.2393.517_amd64.deb -O /tmp/opera.deb
+	sudo dpkg -i /tmp/opera.deb
 fi
 
 # Install Firefox Action
