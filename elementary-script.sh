@@ -43,6 +43,8 @@ GUI=$(zenity --list --checklist \
 	FALSE "Install Redshift" "Use night shift to save your eyes." \
 	FALSE "Install Disk Utility" "Gnome Disk Utility is a tool to manage disk drives and media." \
 	FALSE "Install Spotify" "A desktop software to listen music by streaming with the possibility to create and share playlists.." \
+  FALSE "Install K3b" "A comfortable CD/DVD writing suite for Linux/KDE." \
+	FALSE "Install Calibre" "The one stop solution for all your e-book needs. Comprehensive e-book software." \
 	TRUE "Install Ubuntu Restricted Extras" "Installs commonly used applications with restricted copyright (mp3, avi, mpeg, TrueType, Java, Flash, Codecs)." \
 	TRUE "Fix Broken Packages" "Fixes the broken packages." \
 	TRUE "Clean-Up Junk" "Removes unnecessary packages and the local repository of retrieved package files." \
@@ -421,6 +423,24 @@ then
 	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 	sudo apt-get update
 	installPackage spotify-client
+fi
+
+# Install K3b
+if [[ $GUI == *"Install K3b"* ]]
+then
+	clear
+	echo "Installing K3b..."
+	echo ""
+	installPackage k3b
+fi
+
+# Install Calibre
+if [[ $GUI == *"Install Calibre"* ]]
+then
+	clear
+	echo "Installing Calibre..."
+	echo ""
+	installPackage calibre
 fi
 
 # Install Ubuntu Restricted Extras Action
