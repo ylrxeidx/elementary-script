@@ -1,24 +1,31 @@
 # elementary-script
 
-A tiny script that helps you perform necessary tasks after you install elementary OS.
+A tiny script that helps you perform necessary tasks after you install elementary OS or others Ubuntu based systems.
 
-![Screenshot](https://raw.githubusercontent.com/ylrxeidx/elementary-script/master/Screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/btd1337/elementary-script/master/Screenshot.png)
 
-## elementary OS Version Compatibility
+## OS Version Compatibility
 
-elementary-script will always support the lastest stable version of elementary OS, which at the moment is **elementary OS 0.2 Luna**.
+elementary-script will always support the lastest stable version of elementary OS, which at the moment is **elementary OS 0.4 Loki** and others Ubuntu based systems.
 
 ## Run
 
 Copy and paste the following line into a terminal window in order to run the script.
 
 ```bash
-wget -O /tmp/elementary-script.sh https://raw.githubusercontent.com/ylrxeidx/elementary-script/master/elementary-script.sh && chmod +x /tmp/elementary-script.sh && /tmp/elementary-script.sh
+sudo apt install git
+git clone https://github.com/btd1337/elementary-script
+cd elementary-script
+./elementary-script.sh
 ```
+
+## References
+
+[Diolinux](http://www.diolinux.com.br/2016/12/elementary-script-pos-instalacao.html)
 
 ## Donate
 
-[![Support via Gratipay](https://cdn.rawgit.com/gratipay/gratipay-badge/2.3.0/dist/gratipay.png)](https://gratipay.com/ylrxeidx/)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_flow&SESSION=mGFVFnsgi3YhUG_ZA8UBwRWhLy7-Udj680edJmyp0iouudyIaNlWKMgldRi&dispatch=5885d80a13c0db1f8e263663d3faee8d333dc9aadeed3fe0b5b299d55fd35542)
 
 ## License
 
